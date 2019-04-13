@@ -1002,6 +1002,8 @@ class QLearning(MDP):
         self.Q = _np.zeros((self.S, self.A))
         self.mean_discrepancy = []
 
+        self.V = None
+
     def run(self):
         # Run the Q-learning algoritm.
         discrepancy = []
