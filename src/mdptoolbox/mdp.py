@@ -206,7 +206,7 @@ class MDP(object):
         # policy can also be stored as a vector
         self.policy = None
 
-        self.record = False
+        self.record = True
         self.experiment_data = []
 
     def __repr__(self):
