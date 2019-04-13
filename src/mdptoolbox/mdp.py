@@ -206,6 +206,8 @@ class MDP(object):
         # policy can also be stored as a vector
         self.policy = None
 
+        self.experiment_data = []
+
     def __repr__(self):
         P_repr = "P: \n"
         R_repr = "R: \n"
@@ -243,7 +245,12 @@ class MDP(object):
         # Get the policy and value, for now it is being returned but...
         # Which way is better?
         # 1. Return, (policy, value)
-        return (Q.argmax(axis=0), Q.max(axis=0))
+        policy = Q.argmax(axis=0)
+        V = Q.max(axis=0)
+        time_elapsed = _time.time() - self.time
+        row = [self.iter, time_elapsed, policy, V]
+        self.experiment_data.append(row)
+        return (policy, V)
         # 2. update self.policy and self.V directly
         # self.V = Q.max(axis=1)
         # self.policy = Q.argmax(axis=1)
