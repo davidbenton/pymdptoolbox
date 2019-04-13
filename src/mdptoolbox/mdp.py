@@ -247,7 +247,11 @@ class MDP(object):
         # 1. Return, (policy, value)
         policy = Q.argmax(axis=0)
         V = Q.max(axis=0)
-        time_elapsed = _time.time() - self.time
+        if self.time is None:
+            self.time = _time.time()
+            time_elapsed = 0.0
+        else:
+            time_elapsed = _time.time() - self.time
         row = [self.iter, time_elapsed, policy, V]
         self.experiment_data.append(row)
         return (policy, V)
