@@ -207,7 +207,7 @@ class MDP(object):
         self.policy = None
 
         self.record = True
-        self.experiment_data = ['iteration', 'time_elapsed', 'policy', 'V']
+        self.experiment_data = [['iteration', 'time_elapsed', 'policy', 'V']]
 
     def __repr__(self):
         P_repr = "P: \n"
